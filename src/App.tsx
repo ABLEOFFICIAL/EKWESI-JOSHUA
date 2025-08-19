@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
