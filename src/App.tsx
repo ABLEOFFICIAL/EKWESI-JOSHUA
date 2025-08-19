@@ -10,8 +10,11 @@ import {
   Code,
   Palette,
   Zap,
+  Linkedin,
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -143,20 +146,29 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-16 min-h-screen flex items-center">
+      <motion.section
+        id="home"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="pt-16 min-h-screen flex items-center"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
             <div className="mb-8">
-              <div className="w-72 bg-[url('./assets/josh.jpeg')] bg-cover bg-center h-72 mx-auto rounded-full flex items-center justify-center mb-6">
+              <div
+                className="w-72 h-72 mx-auto mb-6 rounded-full border-4 border-blue-700 bg-[url('./assets/myPic.png')] bg-cover bg-center 
+  transition-transform duration-500 ease-out hover:scale-105 hover:rotate-1"
+              >
                 <img src="" alt="" />
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
                 Hi, I'm <span className="text-blue-700">Ekwesi Joshua</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                A creative front-end developer passionate about building clean
-                and responsive web experiences. I enjoy learning new
-                technologies and turning ideas into interactive designs.
+                A creative and professional website developer passionate about
+                building clean and responsive web experiences. I enjoy learning
+                new technologies and turning ideas into interactive designs.
               </p>
             </div>
 
@@ -178,6 +190,13 @@ function App() {
             <div className="flex justify-center space-x-6">
               <a
                 target="_blank"
+                href="https://www.linkedin.com/in/joshua-ekwesi-4920ab267/"
+                className="text-gray-600 hover:text-blue-700 transition-colors"
+              >
+                <Linkedin size={24} />
+              </a>
+              <a
+                target="_blank"
                 href="https://github.com/ABLEOFFICIAL"
                 className="text-gray-600 hover:text-blue-700 transition-colors"
               >
@@ -192,12 +211,25 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-gray-50">
+      <motion.section
+        id="about"
+        className="py-20 bg-gray-50"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }} // only animates once when 20% is visible
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               About Me
             </h2>
@@ -206,19 +238,23 @@ function App() {
               digital solutions that combine beautiful design with robust
               functionality.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 My Story
               </h3>
               <p className="text-gray-600 mb-4">
                 My Story I started my journey as a self-taught developer and
-                have grown into a passionate front-end developer with a love for
-                clean design and smooth user experiences. I believe great
-                websites should be functional, responsive, and visually
-                engaging.
+                have grown into a passionate web developer with a love for clean
+                design and smooth user experiences. I believe great websites
+                should be functional, responsive, and visually engaging.
               </p>
               <p className="text-gray-600 mb-6">
                 When I'm not coding, I'm either learning new tools, working on
@@ -228,25 +264,51 @@ function App() {
 
               <div className="flex flex-wrap gap-2">
                 {[
-                  "HTML",
-                  "CSS",
-                  "Javascript",
-                  "TailwindCSS",
-                  "React",
-                  "TypeScript",
-                  "Node.js",
-                ].map((skill) => (
+                  { name: "HTML", bg: "bg-blue-100", text: "text-blue-800" },
+                  { name: "CSS", bg: "bg-red-100", text: "text-red-800" },
+                  {
+                    name: "Javascript",
+                    bg: "bg-yellow-100",
+                    text: "text-yellow-800",
+                  },
+                  {
+                    name: "TailwindCSS",
+                    bg: "bg-orange-100",
+                    text: "text-orange-800",
+                  },
+                  {
+                    name: "React.js",
+                    bg: "bg-green-100",
+                    text: "text-green-800",
+                  },
+                  {
+                    name: "Next.js",
+                    bg: "bg-neutral-100",
+                    text: "text-black",
+                  },
+                  {
+                    name: " TypeScript",
+                    bg: "bg-purple-100",
+                    text: "text-purple-800",
+                  },
+                ].map((skill, idx) => (
                   <span
-                    key={skill}
-                    className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                    key={idx}
+                    className={`px-3 py-1 ${skill.bg} ${skill.text}   rounded-full text-sm font-medium`}
                   >
-                    {skill}
+                    {skill.name}
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-1 gap-6">
+            <motion.div
+              className="grid grid-cols-1 gap-6"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
               <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
@@ -292,13 +354,21 @@ function App() {
                   solutions.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20">
+
+      <motion.section
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }}
+        id="projects"
+        className="py-20"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -312,7 +382,7 @@ function App() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Project 1 */}
-            <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-200">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:transform hover:-translate-y-3 transition-all duration-200">
               <div className="h-48 bg-[url('./assets/ecomerce-landing-page.png')] bg-cover bg-top"></div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -354,7 +424,47 @@ function App() {
             </div>
 
             {/* Project 2 */}
-            <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-200">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:transform hover:-translate-y-3 transition-all duration-200">
+              <div className="h-48 bg-[url('./assets/exclusive.png')] bg-cover bg-top"></div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Exclusive Store
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  A fully responsive e-commerce store designed for a seamless
+                  shopping experience, featuring a wide range of products from
+                  gadgets and electronics to home essentials and clothing. Built
+                  with modern web technologies to ensure speed, usability, and
+                  an intuitive interface.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm">
+                    React
+                  </span>
+                </div>
+                <div className="flex space-x-4">
+                  <a
+                    href="https://full-ecommerce-web-flax.vercel.app/"
+                    target="_blank"
+                    className="flex items-center text-blue-700 hover:text-blue-800 transition-colors"
+                  >
+                    <ExternalLink size={16} className="mr-1" />
+                    Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/ABLEOFFICIAL/FULL-ECOMMERCE-WEB.git"
+                    target="_blank"
+                    className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
+                  >
+                    <Github size={16} className="mr-1" />
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Project 3 */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:transform hover:-translate-y-3 transition-all duration-200">
               <div className="h-48 bg-[url('./assets/product-listing.png')] bg-cover bg-top"></div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -394,8 +504,8 @@ function App() {
               </div>
             </div>
 
-            {/* Project 3 */}
-            <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-200">
+            {/* Project 4 */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:transform hover:-translate-y-3 transition-all duration-200">
               <div className="h-48 bg-[url('./assets/testimonial-slide.png')] bg-cover bg-top"></div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -434,12 +544,58 @@ function App() {
                 </div>
               </div>
             </div>
+
+            {/* Project 5 */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:transform hover:-translate-y-3 transition-all duration-200">
+              <div className="h-48 bg-[url('./assets/logg.png')] bg-cover bg-top"></div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Cargo Logistics
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  A responsive logistics website built to streamline delivery
+                  services, showcasing efficient shipment tracking, service
+                  details, and customer support. Designed with a clean, modern
+                  interface to enhance usability and trust for clients.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm">
+                    React
+                  </span>
+                  <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm">
+                    Next.js
+                  </span>
+                </div>
+                <div className="flex space-x-4">
+                  <a
+                    href="/"
+                    target="_blank"
+                    className="flex items-center text-blue-700 hover:text-blue-800 transition-colors"
+                  >
+                    <ExternalLink size={16} className="mr-1" />
+                    Live Demo
+                  </a>
+                  <button className="flex items-center text-gray-600 hover:text-gray-800 transition-colors">
+                    <Github size={16} className="mr-1" />
+                    GitHub
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-50">
+
+      <motion.section
+        id="contact"
+        className="py-20 bg-gray-50"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }} // only animates once when 20% is visible
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -576,14 +732,14 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="font-bold text-xl mb-4">Ekwesi Joshua</div>
-            <p className="text-gray-400 mb-6">Front-end Engineer</p>
+            <p className="text-gray-400 mb-6">website Engineer</p>
             <div className="flex justify-center space-x-6 mb-8">
               <a
                 href="https://github.com/ABLEOFFICIAL"
