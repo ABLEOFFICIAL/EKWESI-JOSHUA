@@ -741,6 +741,13 @@ function App() {
             <p className="text-gray-400 mb-6">website Engineer</p>
             <div className="flex justify-center space-x-6 mb-8">
               <a
+                target="_blank"
+                href="https://www.linkedin.com/in/joshua-ekwesi-4920ab267/"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <Linkedin size={24} />
+              </a>
+              <a
                 href="https://github.com/ABLEOFFICIAL"
                 target="_blank"
                 className="text-gray-400 hover:text-white transition-colors"
@@ -758,7 +765,7 @@ function App() {
             <div className="border-t border-gray-800 pt-8">
               <p className="text-gray-400">
                 © 2025 Ekwesi Joshua. All rights reserved. Built with React &
-                Tailwind CSS.
+                Typescript.
               </p>
             </div>
           </div>
