@@ -263,8 +263,12 @@ function App() {
 
               <div className="flex flex-wrap gap-2">
                 {[
-                  { name: "HTML", bg: "bg-blue-100", text: "text-blue-800" },
-                  { name: "CSS", bg: "bg-red-100", text: "text-red-800" },
+                  {
+                    name: "HTML",
+                    bg: "bg-orange-100",
+                    text: "text-orange-800",
+                  },
+                  { name: "CSS", bg: "bg-blue-100", text: "text-blue-700" },
                   {
                     name: "Javascript",
                     bg: "bg-yellow-100",
@@ -272,23 +276,28 @@ function App() {
                   },
                   {
                     name: "TailwindCSS",
-                    bg: "bg-orange-100",
-                    text: "text-orange-800",
+                    bg: "bg-cyan-100",
+                    text: "text-cyan-800",
                   },
                   {
-                    name: "React.js",
-                    bg: "bg-green-100",
-                    text: "text-green-800",
+                    name: "Reactjs",
+                    bg: "bg-blue-100",
+                    text: "text-blue-500",
                   },
                   {
-                    name: "Next.js",
+                    name: "Nextjs",
                     bg: "bg-neutral-100",
                     text: "text-black",
                   },
                   {
+                    name: "Vuejs",
+                    bg: "bg-green-100",
+                    text: "text-green-500",
+                  },
+                  {
                     name: " TypeScript",
-                    bg: "bg-purple-100",
-                    text: "text-purple-800",
+                    bg: "bg-blue-400",
+                    text: "text-white",
                   },
                 ].map((skill, idx) => (
                   <span
@@ -382,28 +391,25 @@ function App() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Project 1 */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:transform hover:-translate-y-3 transition-all duration-200">
-              <div className="h-48 bg-[url('./assets/ecomerce-landing-page.png')] bg-cover bg-top"></div>
+              <div className="h-48 bg-[url('./assets/images/scribora.vercel.app_.png')] bg-cover bg-top"></div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  E-Commerce Landing Page
+                  Blog Platform
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  A modern, mobile-first landing page designed with Tailwind
-                  CSS, featuring smooth scroll navigation, interactive FAQ,
-                  testimonial section, and a bold call-to-action for product or
-                  service promotion.
+                  A full-featured blogging platform with an integrated admin
+                  panel for managing posts, users, and categories. It supports
+                  content creation, editing, and publishing, offering a smooth
+                  experience for both readers and administrators.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm">
-                    React
-                  </span>
-                  <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm">
-                    Node.js
+                    Nextjs
                   </span>
                 </div>
                 <div className="flex space-x-4">
                   <a
-                    href="https://landing-page-umber-two-29.vercel.app/"
+                    href="https://scribora.vercel.app/"
                     target="_blank"
                     className="flex items-center text-blue-700 hover:text-blue-800 transition-colors"
                   >
@@ -411,7 +417,7 @@ function App() {
                     Live Demo
                   </a>
                   <a
-                    href="https://github.com/ABLEOFFICIAL/LANDING-PAGE.git"
+                    href="https://github.com/ABLEOFFICIAL/SCRIBORA"
                     target="_blank"
                     className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
                   >
@@ -421,7 +427,46 @@ function App() {
                 </div>
               </div>
             </div>
-
+            {/* Project 1 */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:transform hover:-translate-y-3 transition-all duration-200">
+              <div className="h-48 bg-[url('./assets/images/user-dashboard-five-dun.vercel.app_.png')] bg-cover bg-top"></div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  User Dashboard
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  A React web application with an intelligent authentication
+                  flow. New users are seamlessly guided through a registration
+                  process that captures personal details such as name, email,
+                  and location. Upon completion, they’re redirected to a
+                  personalized dashboard that dynamically displays their
+                  information.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm">
+                    React
+                  </span>
+                </div>
+                <div className="flex space-x-4">
+                  <a
+                    href="https://user-dashboard-five-dun.vercel.app/"
+                    target="_blank"
+                    className="flex items-center text-blue-700 hover:text-blue-800 transition-colors"
+                  >
+                    <ExternalLink size={16} className="mr-1" />
+                    Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/ABLEOFFICIAL/USER-DASHBOARD"
+                    target="_blank"
+                    className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
+                  >
+                    <Github size={16} className="mr-1" />
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
             {/* Project 2 */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:transform hover:-translate-y-3 transition-all duration-200">
               <div className="h-48 bg-[url('./assets/exclusive.png')] bg-cover bg-top"></div>
@@ -452,6 +497,159 @@ function App() {
                   </a>
                   <a
                     href="https://github.com/ABLEOFFICIAL/FULL-ECOMMERCE-WEB.git"
+                    target="_blank"
+                    className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
+                  >
+                    <Github size={16} className="mr-1" />
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+            {/* Project 2 */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:transform hover:-translate-y-3 transition-all duration-200">
+              <div className="h-48 bg-[url('./assets/images/todoimage.png')] bg-cover bg-top"></div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Todo App
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  A productivity web application built with Next.js, featuring
+                  full CRUD functionality. Users can add, edit, and delete tasks
+                  with real-time updates powered by a connected backend and
+                  database for persistent data storage.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm">
+                    Nextjs
+                  </span>
+                </div>
+                <div className="flex space-x-4">
+                  <a
+                    href="https://to-do-app-bice-three.vercel.app/"
+                    target="_blank"
+                    className="flex items-center text-blue-700 hover:text-blue-800 transition-colors"
+                  >
+                    <ExternalLink size={16} className="mr-1" />
+                    Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/ABLEOFFICIAL/TO-DO-APP"
+                    target="_blank"
+                    className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
+                  >
+                    <Github size={16} className="mr-1" />
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+            {/* Project 1 */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:transform hover:-translate-y-3 transition-all duration-200">
+              <div className="h-48 bg-[url('./assets/ecomerce-landing-page.png')] bg-cover bg-top"></div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  E-Commerce Landing Page
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  A modern, mobile-first landing page designed with Tailwind
+                  CSS, featuring smooth scroll navigation, interactive FAQ,
+                  testimonial section, and a bold call-to-action for product or
+                  service promotion.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm">
+                    React
+                  </span>
+                </div>
+                <div className="flex space-x-4">
+                  <a
+                    href="https://landing-page-umber-two-29.vercel.app/"
+                    target="_blank"
+                    className="flex items-center text-blue-700 hover:text-blue-800 transition-colors"
+                  >
+                    <ExternalLink size={16} className="mr-1" />
+                    Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/ABLEOFFICIAL/LANDING-PAGE.git"
+                    target="_blank"
+                    className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
+                  >
+                    <Github size={16} className="mr-1" />
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+            {/* Project 1 */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:transform hover:-translate-y-3 transition-all duration-200">
+              <div className="h-48 bg-[url('./assets/images/reacttasktwoimage.png')] bg-cover bg-top"></div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Architecture Project Website
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  A responsive React website built from a Figma design,
+                  featuring a Landing Page, Photo Gallery, and Our Projects
+                  page. Implemented with React Router for smooth navigation and
+                  pixel-perfect alignment with the provided UI design.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm">
+                    React
+                  </span>
+                </div>
+                <div className="flex space-x-4">
+                  <a
+                    href="https://react-task-two-rose.vercel.app/"
+                    target="_blank"
+                    className="flex items-center text-blue-700 hover:text-blue-800 transition-colors"
+                  >
+                    <ExternalLink size={16} className="mr-1" />
+                    Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/ABLEOFFICIAL/REACT-TASK-TWO.git"
+                    target="_blank"
+                    className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
+                  >
+                    <Github size={16} className="mr-1" />
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Project 2 */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:transform hover:-translate-y-3 transition-all duration-200">
+              <div className="h-48 bg-[url('./assets/images/vue-quiz-app-psi.vercel.app_Display.png')] bg-cover bg-top"></div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Quiz App
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  An interactive quiz application built with Vue that tests
+                  users’ knowledge through multiple-choice questions. It
+                  features real-time feedback, score tracking, and a smooth,
+                  user-friendly interface.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm">
+                    Vue
+                  </span>
+                </div>
+                <div className="flex space-x-4">
+                  <a
+                    href="*"
+                    target="_blank"
+                    className="flex items-center text-blue-700 hover:text-blue-800 transition-colors"
+                  >
+                    <ExternalLink size={16} className="mr-1" />
+                    Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/ABLEOFFICIAL/VUE-QUIZ-APP"
                     target="_blank"
                     className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
                   >
@@ -534,6 +732,45 @@ function App() {
                   </a>
                   <a
                     href="https://github.com/ABLEOFFICIAL/MINI-STORE.git"
+                    target="_blank"
+                    className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
+                  >
+                    <Github size={16} className="mr-1" />
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+            {/* Project 4 */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:transform hover:-translate-y-3 transition-all duration-200">
+              <div className="h-48 bg-[url('./assets/images/weight-converter-five.vercel.app_.png')] bg-cover bg-top"></div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Weight Converter
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  A lightweight JavaScript tool that converts between common
+                  weight units (kg, g, mg, p) with instant, client-side
+                  calculations. Built for accuracy and responsiveness, it
+                  features input validation and a clean UI for seamless user
+                  experience.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm">
+                    Javascript
+                  </span>
+                </div>
+                <div className="flex space-x-4">
+                  <a
+                    href="https://weight-converter-five.vercel.app/"
+                    target="_blank"
+                    className="flex items-center text-blue-700 hover:text-blue-800 transition-colors"
+                  >
+                    <ExternalLink size={16} className="mr-1" />
+                    Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/ABLEOFFICIAL/WEIGHT-CONVERTER"
                     target="_blank"
                     className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
                   >
