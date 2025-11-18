@@ -14,8 +14,8 @@ import {
   ChevronLeft,
   ChevronRight,
   Sparkles,
+  Award,
 } from "lucide-react";
-import emailjs from "@emailjs/browser";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,6 +31,35 @@ function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const projectsPerPage = 6;
+
+  const certifications = [
+    {
+      title: "Frontend Development Certification",
+      issuer: "freeCodeCamp",
+      // date: "2024",
+      image: "/images/kodecampCertificate.png",
+      credentialUrl: "/documents/joshua_ekwesi_kodecamp_5_0_cert_997074.pdf",
+      skills: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+    },
+    // {
+    //   title: "React Developer Certification",
+    //   issuer: "Meta",
+    //   date: "2024",
+    //   image:
+    //     "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=300&fit=crop",
+    //   credentialUrl: "#",
+    //   skills: ["React", "Hooks", "State Management"],
+    // },
+    // {
+    //   title: "JavaScript Algorithms",
+    //   issuer: "freeCodeCamp",
+    //   date: "2023",
+    //   image:
+    //     "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400&h=300&fit=crop",
+    //   credentialUrl: "#",
+    //   skills: ["JavaScript", "Algorithms", "Data Structures"],
+    // },
+  ];
 
   const projects = [
     {
@@ -134,7 +163,13 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "projects", "contact"];
+      const sections = [
+        "home",
+        "about",
+        "projects",
+        "certifications",
+        "contact",
+      ];
       const current = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
@@ -167,27 +202,17 @@ function App() {
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setFormStatus("");
 
-    const serviceID = "service_xw05ht7";
-    const templateID = "template_vqxo8x7";
-    const publicKey = "0-UL1jRHodRtq_rl7";
-
-    emailjs.send(serviceID, templateID, formData, publicKey).then(
-      () => {
-        setFormStatus("Message sent successfully!");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-        setIsSubmitting(false);
-      },
-      (error) => {
-        setFormStatus("Failed to send message. Please try again.");
-        setIsSubmitting(false);
-        console.error("EmailJS error:", error);
-      }
-    );
+    // Simulate form submission
+    setTimeout(() => {
+      setFormStatus("Message sent successfully!");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setIsSubmitting(false);
+    }, 1500);
   };
 
   const handlePageChange = (page: number) => {
@@ -210,22 +235,24 @@ function App() {
             </div>
 
             <div className="hidden md:flex space-x-8">
-              {["home", "about", "projects", "contact"].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className={`capitalize transition-all duration-300 relative ${
-                    activeSection === item
-                      ? "text-blue-700 font-medium"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  {item}
-                  {activeSection === item && (
-                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-700 rounded-full"></span>
-                  )}
-                </button>
-              ))}
+              {["home", "about", "projects", "certifications", "contact"].map(
+                (item) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(item)}
+                    className={`capitalize transition-all duration-300 relative ${
+                      activeSection === item
+                        ? "text-blue-700 font-medium"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
+                  >
+                    {item}
+                    {activeSection === item && (
+                      <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-700 rounded-full"></span>
+                    )}
+                  </button>
+                )
+              )}
             </div>
 
             <div className="md:hidden">
@@ -242,15 +269,17 @@ function App() {
         {isMenuOpen && (
           <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100">
             <div className="px-4 py-2 space-y-1">
-              {["home", "about", "projects", "contact"].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className="block w-full text-left px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-blue-50 rounded-md transition-colors capitalize"
-                >
-                  {item}
-                </button>
-              ))}
+              {["home", "about", "projects", "certifications", "contact"].map(
+                (item) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(item)}
+                    className="block w-full text-left px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-blue-50 rounded-md transition-colors capitalize"
+                  >
+                    {item}
+                  </button>
+                )
+              )}
             </div>
           </div>
         )}
@@ -554,8 +583,77 @@ function App() {
         </div>
       </section>
 
+      {/* Certifications Section */}
+      <section id="certifications" className="py-20 bg-white relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-50/30 to-transparent"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Certifications & Credentials
+            </h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-blue-700 to-purple-600 mx-auto rounded-full"></div>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-6">
+              Professional certifications and courses that demonstrate my
+              commitment to continuous learning and expertise in web
+              development.
+            </p>
+          </div>
+
+          {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> */}
+          <div className="flex flex-col md:flex-row md:flex-wrap gap-8 justify-center">
+            {certifications.map((cert, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
+              >
+                <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 relative overflow-hidden">
+                  <img
+                    src={cert.image}
+                    alt={cert.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <Award className="text-white" size={48} />
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    {cert.title}
+                  </h3>
+                  <p className="text-blue-700 font-medium mb-1">
+                    {cert.issuer}
+                  </p>
+                  {/* <p className="text-gray-500 text-sm mb-4">{cert.date}</p> */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {cert.skills.map((skill, i) => (
+                      <span
+                        key={i}
+                        className="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs font-medium"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href={cert.credentialUrl}
+                    target="_blank"
+                    className="inline-flex items-center text-blue-700 hover:text-blue-800 transition-colors text-sm font-medium"
+                  >
+                    <ExternalLink size={16} className="mr-1" />
+                    View Credential
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-white">
+      <section
+        id="contact"
+        className="py-20 bg-gradient-to-br from-slate-50 to-blue-50"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
